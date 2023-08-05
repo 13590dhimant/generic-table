@@ -13,26 +13,26 @@ export class TestComponent {
   actions: GenericActionModel[] = [];
   data: TestModel[] = [];
   showGeneric: boolean = false;
+  ss: string[] = [];
 
   constructor(private _testService: TestService) {
-
-    this.actions = [new GenericActionModel(ActionTypes.Edit, 'Edit', this.editData),
-      new GenericActionModel(ActionTypes.View, 'View', this.viewData)];
+    this.actions = [
+      new GenericActionModel(ActionTypes.Edit, 'Edit', this.editData),
+      new GenericActionModel(ActionTypes.View, 'View', this.viewData),
+    ];
 
     console.log('constructor : ' + this._testService.edit());
 
-    setTimeout(() => this.showGeneric = true, 1000);
-
+    setTimeout(() => (this.showGeneric = true), 1000);
   }
-
+  ngOnInit(): void {}
 
   editData(model: IGenericModel) {
-    debugger;
-    console.log('editData : ' + this._testService.edit());
+    this.ss.push('editData : ' + this._testService.edit());
   }
 
   viewData(model: IGenericModel) {
-    console.log('viewData : ' + this._testService.edit());
+    this.ss.push('viewData : ' + this._testService.view());
   }
 
   onActionClicked($event: IGenericActionResult) {
@@ -41,7 +41,7 @@ export class TestComponent {
     //alternate way
     if ($event.action.action === ActionTypes.Edit) {
       this.editData($event.item);
-    } else if($event.action.action === ActionTypes.View) {
+    } else if ($event.action.action === ActionTypes.View) {
       this.viewData($event.item);
     }
   }

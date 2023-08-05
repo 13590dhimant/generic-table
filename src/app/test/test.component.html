@@ -1,3 +1,11 @@
 <p>test works!</p>
 
-<app-generic *ngIf="showGeneric" [actions]="actions" (onAction)="onActionClicked($event)"></app-generic>
+<app-generic *ngIf="showGeneric"
+             [actions]="actions"
+             (onAction)="onActionClicked($event)"></app-generic>
+
+<ul>
+  <li *ngFor="let s of ss">
+    {{ s }}
+  </li>
+</ul>

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TestService {
@@ -8,6 +8,10 @@ export class TestService {
   }
 
   edit(): string {
-    return 'return data from server';
+    return 'return EDIT data from server';
+  }
+
+  view(): string {
+    return 'return VIEW data from server';
   }
 }
